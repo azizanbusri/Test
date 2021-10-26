@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtTitle = view2.findViewById(R.id.lblMessageTitle);
         txtTitle.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.purple_700));
 
-        txtTitle.setText(getResources().getString(R.string.api_key));
+        txtTitle.setText(getResources().getString(R.string.search_articles));
         alertDialog.setView(view2);
 
         alertDialog.setPositiveButton("OK", null);
