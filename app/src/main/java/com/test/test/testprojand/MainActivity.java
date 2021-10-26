@@ -67,13 +67,18 @@ public class MainActivity extends AppCompatActivity {
                 if (isSuccess) {
                     try {
                         Object object = new JSONTokener(result.toString()).nextValue();
-                        System.out.println("object : " + ((JSONObject)object).get("response"));
+
+                        for (int i = 0 ; i < ((JSONArray)((JSONObject)object).get("results")).length(); i++) {
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("title"));
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("published_date"));
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
-            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
+            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/mostpopular/v2/viewed/30.json?&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
+
         });
 
         cardView3.setOnClickListener(view -> {
@@ -81,13 +86,16 @@ public class MainActivity extends AppCompatActivity {
                 if (isSuccess) {
                     try {
                         Object object = new JSONTokener(result.toString()).nextValue();
-                        System.out.println("object : " + ((JSONObject)object).get("response"));
+                        for (int i = 0 ; i < ((JSONArray)((JSONObject)object).get("results")).length(); i++) {
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("title"));
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("published_date"));
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
-            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
+            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/mostpopular/v2/shared/30.json?&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
         });
 
         cardView4.setOnClickListener(view -> {
@@ -95,13 +103,16 @@ public class MainActivity extends AppCompatActivity {
                 if (isSuccess) {
                     try {
                         Object object = new JSONTokener(result.toString()).nextValue();
-                        System.out.println("object : " + ((JSONObject)object).get("response"));
+                        for (int i = 0 ; i < ((JSONArray)((JSONObject)object).get("results")).length(); i++) {
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("title"));
+                            System.out.println("object : " + ((JSONObject)((JSONArray)((JSONObject)object).get("results")).get(i)).get("published_date"));
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
-            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
+            asyncTaskGetData.execute(setCommonHttp("https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?&api-key=QhYmHzOevePoHl6pMWoRGcR4SGGpRh8f"), setRequestProperty());
         });
 
     }
