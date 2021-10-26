@@ -1,6 +1,9 @@
 package com.test.test.testprojand;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +19,7 @@ public class Utils {
         ((AppCompatActivity)context).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.abs_layout, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.abs_layout, null);
         TextView textView = view.findViewById(R.id.tvTitle);
         textView.setText(strTitle);
         textView.setGravity(Gravity.CENTER);
@@ -25,4 +28,10 @@ public class Utils {
         view.setLayoutParams(params);
         ((AppCompatActivity)context).getSupportActionBar().setCustomView(view);
     }
+
+    public static void ChangeActivityWithFinish(Context context, Class<?> activityClass) {
+        context.startActivity(new Intent(context, activityClass));
+        ((Activity) context).finish();
+    }
+
 }

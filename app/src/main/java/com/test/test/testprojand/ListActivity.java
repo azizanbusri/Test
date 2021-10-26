@@ -33,7 +33,6 @@ public class ListActivity extends AppCompatActivity {
         Utils.SetActionBarDetail(ListActivity.this, "Articles");
 
         SetRecyclerSetting();
-        Utils.SetActionBarDetail(ListActivity.this, "Articles");
     }
 
     public void SetRecyclerSetting() {
@@ -45,10 +44,7 @@ public class ListActivity extends AppCompatActivity {
         }
 
         layoutManager = new LinearLayoutManager(ListActivity.this);
-        list = new ArrayList<>();
-
-        list.add(new ModelRecyclerView("This","Data"));
-
+        list = GlobData.modelRecyclerViews;
         onNotifyDataChange(list);
     }
 
@@ -58,4 +54,10 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        Utils.ChangeActivityWithFinish(ListActivity.this, MainActivity.class);
+    }
+
 }
